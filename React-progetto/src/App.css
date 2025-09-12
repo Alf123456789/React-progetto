@@ -1,42 +1,120 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root{
+  --max-width: 1200px;
+  --sidebar-width: 280px;
+  --main-height: 480px;
+  --thumb-height: 180px;
+  --gap: 20px;
+  --page-padding: 28px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* reset base semplice */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; margin: 0; font-family: Inter, system-ui, Arial; background: #efefef; }
+
+/* wrapper che centra il layout nella pagina (sia orizz che vert) */
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* pannello bianco centrato con max-width per mantenere le dimensioni leggibili */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  background: white;
+  padding: var(--page-padding);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: var(--main-height) var(--thumb-height);
+  gap: var(--gap);
+}
+
+/* sidebar più grande e centrata verticalmente dentro la sua cella */
+.sidebar {
+  background: #7cb342;
+  color: white;
+  padding: 18px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* singoli elementi nella sidebar */
+.sidebar-item {
+  background: rgba(255,255,255,0.08);
+  padding: 10px 12px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+/* area principale grande (simula l'immagine grande) */
+.main {
+  background: #2196f3;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* contenuto finto per l'immagine grande */
+.fake-img {
+  width: 96%;
+  height: 92%;
+  border: 4px dashed rgba(255,255,255,0.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  letter-spacing:1px;
+  border-radius:6px;
+}
+
+/* riga sotto che contiene 3 box (thumbnails), posizionata sotto la main */
+.bottom {
+  grid-column: 2;
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* singoli box più alti e centrati */
+.box {
+  flex: 1;
+  min-height: calc(var(--thumb-height) - 10px);
+  background: #ff9800;
+  color: white;
+  border-radius: 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+/* RESPONSIVE: su schermi stretti tutto si impila e resta centrato */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
-  to {
-    transform: rotate(360deg);
+  .sidebar {
+    order: 0;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .main {
+    order: 1;
+    height: auto;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  .bottom {
+    order: 2;
+    flex-direction: column;
+  }
+  .box { min-height: 120px; }
 }

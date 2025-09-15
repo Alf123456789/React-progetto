@@ -4,20 +4,32 @@ const Sidebar: React.FC = () => {
   return (
     <aside className="sidebar bg-light p-3">
       <h3 className="h5 mb-3 text-secondary">Gallery Sidebar</h3>
-      <div className="sidebar-item bg-white p-3 mb-2 rounded shadow-sm">
-        <div className="image-placeholder bg-secondary bg-opacity-25 p-4 rounded text-center">
-          <span className="text-muted">Image 1</span>
-        </div>
+
+      {/* Immagine 1 */}
+      <div className="sidebar-item bg-white p-2 mb-2 rounded shadow-sm">
+        <img
+          src="/images/Natura1.jpg"
+          alt="Natura 1"
+          className="img-fluid rounded"
+        />
       </div>
-      <div className="sidebar-item bg-white p-3 mb-2 rounded shadow-sm">
-        <div className="image-placeholder bg-info bg-opacity-25 p-4 rounded text-center">
-          <span className="text-muted">Image 2</span>
-        </div>
+
+      {/* Immagine 2 */}
+      <div className="sidebar-item bg-white p-2 mb-2 rounded shadow-sm">
+        <img
+          src="/images/Natura2.jpg"
+          alt="Natura 2"
+          className="img-fluid rounded"
+        />
       </div>
-      <div className="sidebar-item bg-white p-3 rounded shadow-sm">
-        <div className="image-placeholder bg-success bg-opacity-25 p-4 rounded text-center">
-          <span className="text-muted">Image 3</span>
-        </div>
+
+      {/* Immagine 3 */}
+      <div className="sidebar-item bg-white p-2 rounded shadow-sm">
+        <img
+          src="/images/Natura3.jpg"
+          alt="Natura 3"
+          className="img-fluid rounded"
+        />
       </div>
     </aside>
   );
